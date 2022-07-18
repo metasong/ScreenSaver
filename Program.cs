@@ -25,7 +25,7 @@ namespace Metaseed.WebPageScreenSaver
             {
                 case > 0 when args[0].ToLower().Contains("/p"):
                     return;
-                case 0:
+                //case 0:
                 case > 0 when args[0].ToLower().Contains("/c"):
                     ShowPreferences();
                     break;
@@ -72,24 +72,45 @@ namespace Metaseed.WebPageScreenSaver
                         Application.Exit();
                         break;
                     case Keys.C:
-                    {
-                        if (_preferencesForm == null)
                         {
-                            _preferencesForm = new PreferencesForm();
-                            _preferencesForm.Closed += ((o, args) => _preferencesForm = null);
-                            _preferencesForm.ShowDialog();
-                        }
+                            if (_preferencesForm == null)
+                            {
+                                _preferencesForm = new PreferencesForm();
+                                _preferencesForm.Closed += ((o, args) => _preferencesForm = null);
+                                _preferencesForm.ShowDialog();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             };
 
-            if (Preferences.CloseOnMouseMovement)
+            var cursorHide = true;
+            Cursor.Hide();
+            MouseHook.Start();
+            var hideCursorTimer = new Timer() { Interval = 6000 };
+            hideCursorTimer.Tick += (sender, e) =>
             {
-                MouseHook.Start();
-                MouseHook.MouseAction += (o, e) => { Application.Exit(); };
-            }
+                if (!cursorHide)
+                {
+                    Cursor.Hide();
+                    cursorHide = true;
+                }
+            };
+            //hideCursorTimer.Start();
+            MouseHook.MouseAction += (o, e) =>
+            {
+                hideCursorTimer.Stop();
+                hideCursorTimer.Start();
+                if (cursorHide)
+                {
+                    Cursor.Show();
+                    cursorHide = false;
+                }
+
+                if (Preferences.CloseOnMouseMovement)
+                    Application.Exit();
+            };
         }
 
         private static PreferencesForm? _preferencesForm;

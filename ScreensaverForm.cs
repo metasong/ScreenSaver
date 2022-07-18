@@ -10,17 +10,14 @@ namespace Metaseed.WebPageScreenSaver
 {
     internal partial class ScreenSaverForm : Form
     {
-        private int _currentURLIndex;
+        private int _currentUrlIndex;
 
         private readonly ScreenInformation _screen;
 
         public ScreenSaverForm(ScreenInformation screen)
         {
             _screen = screen;
-            _currentURLIndex = 0;
 
-
-            //Cursor.Hide();
             InitializeComponent();
 
             // Manually set size and location on screen
@@ -65,12 +62,12 @@ namespace Metaseed.WebPageScreenSaver
         private void RotateSite()
         {
             var urls = _screen.URLs.ToList();
-            if (_currentURLIndex >= urls.Count)
+            if (_currentUrlIndex >= urls.Count)
             {
-                _currentURLIndex = 0;
+                _currentUrlIndex = 0;
             }
 
-            BrowseTo(urls[_currentURLIndex++]);
+            BrowseTo(urls[_currentUrlIndex++]);
         }
 
         private void BrowseTo(string url)
