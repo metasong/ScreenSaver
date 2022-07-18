@@ -25,7 +25,7 @@ namespace Metaseed.WebPageScreenSaver
             {
                 case > 0 when args[0].ToLower().Contains("/p"):
                     return;
-                //case 0:
+                case 0:
                 case > 0 when args[0].ToLower().Contains("/c"):
                     ShowPreferences();
                     break;
@@ -100,7 +100,6 @@ namespace Metaseed.WebPageScreenSaver
             //hideCursorTimer.Start();
             MouseHook.MouseAction += (o, e) =>
             {
-                hideCursorTimer.Stop();
                 hideCursorTimer.Start();
                 if (cursorHide)
                 {

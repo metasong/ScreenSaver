@@ -90,7 +90,14 @@ namespace Metaseed.WebPageScreenSaver
 
                 foreach (string url in currentScreen.URLs)
                 {
-                    currentUserControl._listViewURLs.Items.Add(url);
+
+                    (var isChecked, string u) = PrefsByScreenUserControl.GetUrl(url);
+                    var item = new ListViewItem
+                    {
+                        Text = u,
+                        Checked = isChecked
+                    };
+                    currentUserControl._listViewURLs.Items.Add(item);
                 }
 
                 currentUserControl._numericUpDownRotationInterval.Value = currentScreen.RotationInterval;

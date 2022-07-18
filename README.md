@@ -33,6 +33,7 @@ Whether you are just installing it or building it, you need the following depend
 * fix mouse moving can not close the screen saver
 * add 'esc' key to close screen saver
 * when screen saver is shown, press 'C' to show configuration dialog
+* auto hide cursor after 6s
 
 
 ### 2.0.2-Alpha

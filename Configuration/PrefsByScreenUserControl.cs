@@ -20,11 +20,24 @@ namespace Metaseed.WebPageScreenSaver
         public void Save(int screenNumber)
         {
             ScreenInformation currentScreen = Preferences.Screens[screenNumber];
-            currentScreen.URLs = (from ListViewItem item in _listViewURLs.Items.Cast<ListViewItem>() select item.Text);
+            currentScreen.URLs = (from ListViewItem item in _listViewURLs.Items.Cast<ListViewItem>() select $"{item.Checked}>{item.Text}");
             currentScreen.RotationInterval = (int)_numericUpDownRotationInterval.Value;
             currentScreen.Shuffle = _checkBoxShuffle.Checked;
         }
 
+        public static (bool, string) GetUrl(string url)
+        {
+            var parts = url.Split('>');
+            var isChecked = true;
+            var u = url;
+            if (parts.Length == 2)
+            {
+                isChecked = bool.Parse(parts[0]);
+                u = parts[1];
+            }
+
+            return (isChecked, url);
+        }
         private void ButtonDown_Click(object sender, EventArgs e)
         {
             // TODO: make button grey out when none selected OR when all selected ones are in a bunch at the bottom.
@@ -98,6 +111,7 @@ namespace Metaseed.WebPageScreenSaver
         private void ButtonAddURL_Click(object sender, EventArgs e)
         {
             ListViewItem item = _listViewURLs.Items.Add(string.Empty);
+            item.Checked = true;
             item.BeginEdit();
         }
 

@@ -95,6 +95,7 @@
             // 
             // _listViewURLs
             // 
+            this._listViewURLs.CheckBoxes = true;
             this._listViewURLs.Dock = System.Windows.Forms.DockStyle.Fill;
             this._listViewURLs.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._listViewURLs.FullRowSelect = true;

@@ -62,12 +62,18 @@ namespace Metaseed.WebPageScreenSaver
         private void RotateSite()
         {
             var urls = _screen.URLs.ToList();
+
             if (_currentUrlIndex >= urls.Count)
             {
                 _currentUrlIndex = 0;
             }
 
-            BrowseTo(urls[_currentUrlIndex++]);
+            var url = urls[_currentUrlIndex++];
+            var (isChecked, u) = PrefsByScreenUserControl.GetUrl(url);
+            if (isChecked)
+                BrowseTo(u);
+            else
+                RotateSite(); // next one
         }
 
         private void BrowseTo(string url)
@@ -77,6 +83,7 @@ namespace Metaseed.WebPageScreenSaver
             try
             {
                 Debug.WriteLine($"Navigating: {url}");
+
                 _webBrowser.CoreWebView2.Navigate(url);
             }
             catch
