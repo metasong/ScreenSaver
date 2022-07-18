@@ -1,6 +1,6 @@
 ﻿namespace Metaseed.WebPageScreenSaver
 {
-    partial class ScreensaverForm
+    partial class ScreenSaverForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,7 +47,7 @@
             this._webBrowser.TabStop = false;
             this._webBrowser.ZoomFactor = 1D;
             // 
-            // ScreensaverForm
+            // ScreenSaverForm
             // 
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(278, 244);
@@ -57,9 +57,9 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ScreensaverForm";
+            this.Name = "ScreenSaverForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Load += new System.EventHandler(this.ScreensaverForm_Load);
+            this.Load += new System.EventHandler(this.ScreenSaverForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._webBrowser)).EndInit();
             this.ResumeLayout(false);
 

@@ -4,16 +4,16 @@ using System.Windows.Forms;
 
 namespace Metaseed.WebPageScreenSaver
 {
-    internal class MultiFormContext : ApplicationContext
+    internal class MultiFormAppContext : ApplicationContext
     {
-        public MultiFormContext(List<Form> forms)
+        public MultiFormAppContext(List<Form> forms)
         {
             if (forms == null)
             {
                 throw new ArgumentNullException(nameof(forms));
             }
 
-            foreach (Form form in forms)
+            foreach (var form in forms)
             {
                 form.FormClosed += (s, args) => ExitThread();
                 form.Show();

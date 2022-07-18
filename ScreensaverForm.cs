@@ -8,7 +8,7 @@ using Metaseed.WebPageScreenSaver.Configuration.Model;
 
 namespace Metaseed.WebPageScreenSaver
 {
-    internal partial class ScreensaverForm : Form
+    internal partial class ScreenSaverForm : Form
     {
         private int _currentURLIndex;
 
@@ -21,7 +21,7 @@ namespace Metaseed.WebPageScreenSaver
         private readonly Point _savedLocation;
         private GlobalUserEventHandler userEventHandler;
 
-        public ScreensaverForm(ScreenInformation screen)
+        public ScreenSaverForm(ScreenInformation screen)
         {
             _currentURLIndex = 0;
 
@@ -67,7 +67,7 @@ namespace Metaseed.WebPageScreenSaver
             //}
         }
         private Timer registerTimer;
-        private async void ScreensaverForm_Load(object sender, EventArgs e)
+        private async void ScreenSaverForm_Load(object sender, EventArgs e)
         {
             if (_webBrowser == null)
             {

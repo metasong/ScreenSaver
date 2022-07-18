@@ -1,4 +1,4 @@
-﻿namespace Metaseed.WebPageScreenSaver
+﻿namespace Metaseed.WebPageScreenSaver.Configuration.Model
 {
     /// <summary>
     /// Specifies the different ways a screensaver can be shown in multiple screens.

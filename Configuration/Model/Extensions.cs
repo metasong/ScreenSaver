@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 
-namespace Metaseed.WebPageScreenSaver
+namespace Metaseed.WebPageScreenSaver.Configuration.Model
 {
     public static class Extensions
     {

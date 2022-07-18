@@ -9,9 +9,6 @@ namespace Metaseed.WebPageScreenSaver
 {
     static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main(string[] args)
         {
@@ -24,45 +21,38 @@ namespace Metaseed.WebPageScreenSaver
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true); // Prevents seeing tiny unexpected fonts
 
-            if (args.Length > 0 && args[0].ToLower().Contains("/p"))
-                return;
-
-            if (
-                args.Length == 0 ||
-                args.Length > 0 && args[0].ToLower().Contains("/c"))
+            switch (args.Length)
             {
-                ShowPreferences();
-            }
-            else
-            {
-                ShowScreenSaver();
+                case > 0 when args[0].ToLower().Contains("/p"):
+                    return;
+                case 0:
+                case > 0 when args[0].ToLower().Contains("/c"):
+                    ShowPreferences();
+                    break;
+                default:
+                    ShowScreenSaverOnScreens();
+                    break;
             }
         }
 
-        /// <summary>
-        /// Show the screensaver preferences window.
-        /// </summary>
         private static void ShowPreferences()
         {
             Application.Run(new PreferencesForm());
         }
 
-        /// <summary>
-        /// Shows the screensaver form in all the screens.
-        /// </summary>
-        private static void ShowScreenSaver()
+        private static void ShowScreenSaverOnScreens()
         {
             var forms = new List<Form>();
 
             foreach ((int _, ScreenInformation info) in Preferences.Screens)
             {
-                var form = new ScreensaverForm(info);
+                var form = new ScreenSaverForm(info);
                 forms.Add(form);
             }
 
             AddInputHook();
 
-            Application.Run(new MultiFormContext(forms));
+            Application.Run(new MultiFormAppContext(forms));
         }
 
         private static void AddInputHook()
@@ -72,13 +62,16 @@ namespace Metaseed.WebPageScreenSaver
             _globalKeyboardHook = new GlobalKeyboardHook();
             _globalKeyboardHook.KeyboardPressed += (sender, e) =>
             {
-                if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown)
+                if (e.KeyboardState != GlobalKeyboardHook.KeyboardState.KeyDown) return;
+
+                switch (e.KeyboardData.Key)
                 {
                     //Keys loggedKey = e.KeyboardData.Key;
                     //int loggedVkCode = e.KeyboardData.VirtualCode;
-                    if (e.KeyboardData.Key == Keys.Escape)
+                    case Keys.Escape:
                         Application.Exit();
-                    else if (e.KeyboardData.Key == Keys.C)
+                        break;
+                    case Keys.C:
                     {
                         if (_preferencesForm == null)
                         {
@@ -86,6 +79,8 @@ namespace Metaseed.WebPageScreenSaver
                             _preferencesForm.Closed += ((o, args) => _preferencesForm = null);
                             _preferencesForm.ShowDialog();
                         }
+
+                        break;
                     }
                 }
             };
@@ -98,6 +93,6 @@ namespace Metaseed.WebPageScreenSaver
         }
 
         private static PreferencesForm? _preferencesForm;
-        private static GlobalKeyboardHook _globalKeyboardHook;
+        private static GlobalKeyboardHook? _globalKeyboardHook;
     }
 }
