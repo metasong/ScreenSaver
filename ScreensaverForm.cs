@@ -81,8 +81,7 @@ namespace Metaseed.WebPageScreenSaver
                 _currentURLIndex = 0;
             }
 
-            BrowseTo(urls[_currentURLIndex]);
-            _currentURLIndex++;
+            BrowseTo(urls[_currentURLIndex++]);
         }
 
         private void BrowseTo(string url)
