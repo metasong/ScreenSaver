@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <StartupObject>Metaseed.WebPageScreenSaver.Program</StartupObject>
     <RootNamespace>Metaseed.WebPageScreenSaver</RootNamespace>
-    <AssemblyName>WebPageScreenSaver</AssemblyName>
+    <AssemblyName>MetaseedScreenSaver</AssemblyName>
     <Version>3.0.0</Version>
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
     <Platforms>x64;x86</Platforms>

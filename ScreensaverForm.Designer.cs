@@ -6,6 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer _components = null;
+        private Microsoft.Web.WebView2.WinForms.WebView2 _webBrowser;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -67,6 +68,5 @@
 
         #endregion
 
-        private Microsoft.Web.WebView2.WinForms.WebView2 _webBrowser;
     }
 }
