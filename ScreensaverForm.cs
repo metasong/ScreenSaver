@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -139,23 +140,41 @@ namespace WebPageScreensaver
         }
 
         private void BrowseTo(string url)
-        {
-            _webBrowser.Visible = true;
-            _webBrowser.CoreWebView2.Navigate(url);
+        {            // Disable the user event handler while navigating
+            Application.RemoveMessageFilter(userEventHandler);
+
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                _webBrowser.Visible = false;
+            }
+            else
+            {
+                _webBrowser.Visible = true;
+                try
+                {
+                    Debug.WriteLine($"Navigating: {url}");
+                    _webBrowser.CoreWebView2.Navigate(url);
+                }
+                catch
+                {
+                    // This can happen if IE pops up a window that isn't closed before the next call to Navigate()
+                }
+            }
+            Application.AddMessageFilter(userEventHandler);
         }
 
         /// <summary>
         /// Allows capturing the ESC key to close the form.
         /// </summary>
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            //if (keyData == Keys.Escape)
-            {
-                Close();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    //if (keyData == Keys.Escape)
+        //    //{
+        //    //    Close();
+        //    //    return true;
+        //    //}
+        //    //return base.ProcessCmdKey(ref msg, keyData);
+        //}
 
     }
 
@@ -168,8 +187,8 @@ namespace WebPageScreensaver
         private const int WM_KEYDOWN = 0x100;
         private const int WM_KEYUP = 0x101;
 
-        // screensavers and especially multi-window apps can get spurrious WM_MOUSEMOVE events
-        // that don't actually involve any movement (cursor chnages and some mouse driver software
+        // screensavers and especially multi-window apps can get spurious WM_MOUSEMOVE events
+        // that don't actually involve any movement (cursor changes and some mouse driver software
         // can generate them, for example) - so we record the actual mouse position and compare against it for actual movement.
         private Point? lastMousePos;
 
