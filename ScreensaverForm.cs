@@ -14,8 +14,6 @@ namespace Metaseed.WebPageScreenSaver
 
         private Timer _timer;
         private readonly int _rotationInterval;
-        private readonly Size _savedSize;
-        private readonly Point _savedLocation;
         private readonly ScreenInformation _screen;
 
         public ScreenSaverForm(ScreenInformation screen)
@@ -25,18 +23,13 @@ namespace Metaseed.WebPageScreenSaver
 
             _rotationInterval = screen.RotationInterval;
 
-            _savedSize = new Size(screen.Bounds.Width, screen.Bounds.Height);
-            _savedLocation = new Point(screen.Bounds.Left, screen.Bounds.Top);
-
             //Cursor.Hide();
             InitializeComponent();
 
-            // Manually change size and location, since the `InitializeComponent` code tends to get auto replaced by the Designer
+            // Manually set size and location on screen
             this.SuspendLayout();
-            this._webBrowser.Size = _savedSize;
-            this._webBrowser.Location = _savedLocation;
-            this.ClientSize = _savedSize;
-            this.Location = _savedLocation;
+            this.Location = screen.Bounds.Location;
+            this.ClientSize = screen.Bounds.Size;
             this.ResumeLayout(false);
 
         }
