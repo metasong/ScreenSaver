@@ -12,8 +12,6 @@ namespace Metaseed.WebPageScreenSaver
     {
         private int _currentURLIndex;
 
-        private Timer _timer;
-        private readonly int _rotationInterval;
         private readonly ScreenInformation _screen;
 
         public ScreenSaverForm(ScreenInformation screen)
@@ -21,7 +19,6 @@ namespace Metaseed.WebPageScreenSaver
             _screen = screen;
             _currentURLIndex = 0;
 
-            _rotationInterval = screen.RotationInterval;
 
             //Cursor.Hide();
             InitializeComponent();
@@ -52,10 +49,9 @@ namespace Metaseed.WebPageScreenSaver
                     }
                 }
 
-                _timer = new Timer();
-                _timer.Interval = _rotationInterval * 1000;
-                _timer.Tick += (s, ee) => RotateSite();
-                _timer.Start();
+                timerUrlSwitch.Interval = _screen.RotationInterval * 1000;
+                timerUrlSwitch.Tick += (s, ee) => RotateSite();
+                timerUrlSwitch.Start();
 
                 RotateSite();
             }

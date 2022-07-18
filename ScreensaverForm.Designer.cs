@@ -29,7 +29,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._webBrowser = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.timerUrlSwitch = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._webBrowser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,5 +70,7 @@
 
         #endregion
 
+        private System.Windows.Forms.Timer timerUrlSwitch;
+        private System.ComponentModel.IContainer components;
     }
 }
