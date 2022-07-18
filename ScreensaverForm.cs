@@ -34,10 +34,6 @@ namespace WebPageScreensaver
 
             //Cursor.Hide();
             InitializeComponent();
-            if (!_closeOnMouseMovement)
-            {
-                transparentPanel1.Hide();
-            }
 
             // Manually change size and location, since the `InitializeComponent` code tends to get autoreplaced by the Designer
             this.SuspendLayout();
@@ -105,25 +101,26 @@ namespace WebPageScreensaver
                 _webBrowser.Visible = false;
             }
 
-            void RegisterMouseMove(object? oo, EventArgs ee)
-            {
-                registerTimer.Tick -= RegisterMouseMove;
-                Point? lastMousePos = null;
 
-                transparentPanel1.MouseMove += (o, e) =>
-                        {
-                            // filter out the initial moving
-                            // screensavers and especially multi-window apps can get spurrious WM_MOUSEMOVE events
-                            // that don't actually involve any movement (cursor chnages and some mouse driver software
-                            // can generate them, for example) - so we record the actual mouse position and compare against it for actual movement.
-                            if (lastMousePos == null)
-                            {
-                                lastMousePos = Cursor.Position;
-                            }
-                            else if (lastMousePos != Cursor.Position && _closeOnMouseMovement)
-                                Close();
-                        };
-            }
+            //void RegisterMouseMove(object? oo, EventArgs ee)
+            //{
+            //    registerTimer.Tick -= RegisterMouseMove;
+            //    Point? lastMousePos = null;
+
+            //    transparentPanel1.MouseMove += (o, e) =>
+            //            {
+            //                // filter out the initial moving
+            //                // screensavers and especially multi-window apps can get spurrious WM_MOUSEMOVE events
+            //                // that don't actually involve any movement (cursor chnages and some mouse driver software
+            //                // can generate them, for example) - so we record the actual mouse position and compare against it for actual movement.
+            //                if (lastMousePos == null)
+            //                {
+            //                    lastMousePos = Cursor.Position;
+            //                }
+            //                else if (lastMousePos != Cursor.Position && _closeOnMouseMovement)
+            //                    Close();
+            //            };
+            //}
             //registerTimer = new Timer() { Interval = 1000 };
             //registerTimer.Tick += RegisterMouseMove;
             //registerTimer.Start();
@@ -141,7 +138,7 @@ namespace WebPageScreensaver
 
         private void BrowseTo(string url)
         {            // Disable the user event handler while navigating
-            Application.RemoveMessageFilter(userEventHandler);
+            //Application.RemoveMessageFilter(userEventHandler);
 
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -160,7 +157,7 @@ namespace WebPageScreensaver
                     // This can happen if IE pops up a window that isn't closed before the next call to Navigate()
                 }
             }
-            Application.AddMessageFilter(userEventHandler);
+            //Application.AddMessageFilter(userEventHandler);
         }
 
         /// <summary>
@@ -171,7 +168,7 @@ namespace WebPageScreensaver
         //    //if (keyData == Keys.Escape)
         //    //{
         //    //    Close();
-        //    //    return true;
+        //    //    return true;``
         //    //}
         //    //return base.ProcessCmdKey(ref msg, keyData);
         //}

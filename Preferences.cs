@@ -8,6 +8,7 @@ namespace WebPageScreensaver
     internal static class Preferences
     {
         private const string CloseOnMouseMovementName = "CloseOnMouseMovement";
+        private const string CloseOnEscKeyName = "CloseOnEscKey";
         private const string MultiScreenModeName = "MultiScreenMode";
 
         private struct SettingDefaultValue
@@ -32,6 +33,12 @@ namespace WebPageScreensaver
         {
             get => bool.Parse(RootKey.GetOrCreateValue(CloseOnMouseMovementName, true /* default */));
             set => RootKey.SetValue(CloseOnMouseMovementName, value);
+        }
+
+        public static bool CloseOnEscKey
+        {
+            get => bool.Parse(RootKey.GetOrCreateValue(CloseOnEscKeyName, true /* default */));
+            set => RootKey.SetValue(CloseOnEscKeyName, value);
         }
 
         public static Dictionary<int, ScreenInformation> Screens

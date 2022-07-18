@@ -43,6 +43,7 @@
             this._buttonCancel = new System.Windows.Forms.Button();
             this._buttonOK = new System.Windows.Forms.Button();
             this._labelWebsiteURLs = new System.Windows.Forms.Label();
+            this.checkBoxCloseOnEsc = new System.Windows.Forms.CheckBox();
             this._tabControlScreens.SuspendLayout();
             this._tableLayoutPanelMain.SuspendLayout();
             this._tableLayoutPanelMainTop.SuspendLayout();
@@ -167,7 +168,8 @@
             this._tableLayoutPanelMainTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this._tableLayoutPanelMainTop.Controls.Add(this._flowLayoutPanelMultiScreenMode, 1, 1);
             this._tableLayoutPanelMainTop.Controls.Add(this._checkBoxCloseOnMouseMovement, 0, 0);
-            this._tableLayoutPanelMainTop.Controls.Add(this._labelMultiScreen, 0, 1);
+            this._tableLayoutPanelMainTop.Controls.Add(this._labelMultiScreen, 1, 0);
+            this._tableLayoutPanelMainTop.Controls.Add(this.checkBoxCloseOnEsc, 0, 1);
             this._tableLayoutPanelMainTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tableLayoutPanelMainTop.Location = new System.Drawing.Point(0, 0);
             this._tableLayoutPanelMainTop.Margin = new System.Windows.Forms.Padding(0);
@@ -187,9 +189,9 @@
             this._flowLayoutPanelMultiScreenMode.Controls.Add(this._radioButtonMirrorScreens);
             this._flowLayoutPanelMultiScreenMode.Controls.Add(this._radioButtonSpanScreens);
             this._flowLayoutPanelMultiScreenMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._flowLayoutPanelMultiScreenMode.Location = new System.Drawing.Point(121, 44);
+            this._flowLayoutPanelMultiScreenMode.Location = new System.Drawing.Point(272, 44);
             this._flowLayoutPanelMultiScreenMode.Name = "_flowLayoutPanelMultiScreenMode";
-            this._flowLayoutPanelMultiScreenMode.Size = new System.Drawing.Size(488, 41);
+            this._flowLayoutPanelMultiScreenMode.Size = new System.Drawing.Size(337, 41);
             this._flowLayoutPanelMultiScreenMode.TabIndex = 3;
             // 
             // _checkBoxCloseOnMouseMovement
@@ -197,13 +199,12 @@
             this._checkBoxCloseOnMouseMovement.AutoSize = true;
             this._checkBoxCloseOnMouseMovement.Checked = true;
             this._checkBoxCloseOnMouseMovement.CheckState = System.Windows.Forms.CheckState.Checked;
-            this._tableLayoutPanelMainTop.SetColumnSpan(this._checkBoxCloseOnMouseMovement, 2);
             this._checkBoxCloseOnMouseMovement.Dock = System.Windows.Forms.DockStyle.Fill;
             this._checkBoxCloseOnMouseMovement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._checkBoxCloseOnMouseMovement.Location = new System.Drawing.Point(6, 6);
             this._checkBoxCloseOnMouseMovement.Margin = new System.Windows.Forms.Padding(6);
             this._checkBoxCloseOnMouseMovement.Name = "_checkBoxCloseOnMouseMovement";
-            this._checkBoxCloseOnMouseMovement.Size = new System.Drawing.Size(600, 29);
+            this._checkBoxCloseOnMouseMovement.Size = new System.Drawing.Size(257, 29);
             this._checkBoxCloseOnMouseMovement.TabIndex = 1;
             this._checkBoxCloseOnMouseMovement.Text = "Close on mouse movement";
             this._checkBoxCloseOnMouseMovement.UseVisualStyleBackColor = true;
@@ -213,10 +214,10 @@
             this._labelMultiScreen.AutoSize = true;
             this._labelMultiScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this._labelMultiScreen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this._labelMultiScreen.Location = new System.Drawing.Point(6, 47);
+            this._labelMultiScreen.Location = new System.Drawing.Point(275, 6);
             this._labelMultiScreen.Margin = new System.Windows.Forms.Padding(6);
             this._labelMultiScreen.Name = "_labelMultiScreen";
-            this._labelMultiScreen.Size = new System.Drawing.Size(106, 35);
+            this._labelMultiScreen.Size = new System.Drawing.Size(331, 29);
             this._labelMultiScreen.TabIndex = 2;
             this._labelMultiScreen.Text = "Multiscreen:";
             this._labelMultiScreen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,6 +283,17 @@
             this._labelWebsiteURLs.Text = "Website URLs:";
             this._labelWebsiteURLs.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // checkBoxCloseOnEsc
+            // 
+            this.checkBoxCloseOnEsc.AutoSize = true;
+            this.checkBoxCloseOnEsc.Location = new System.Drawing.Point(8, 44);
+            this.checkBoxCloseOnEsc.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.checkBoxCloseOnEsc.Name = "checkBoxCloseOnEsc";
+            this.checkBoxCloseOnEsc.Size = new System.Drawing.Size(169, 29);
+            this.checkBoxCloseOnEsc.TabIndex = 4;
+            this.checkBoxCloseOnEsc.Text = "Close on Esc key";
+            this.checkBoxCloseOnEsc.UseVisualStyleBackColor = true;
+            // 
             // PreferencesForm
             // 
             this.AutoSize = true;
@@ -330,5 +342,6 @@
 
         private System.ComponentModel.IContainer components;
         private System.Windows.Forms.Label _labelWebsiteURLs;
+        private System.Windows.Forms.CheckBox checkBoxCloseOnEsc;
     }
 }

@@ -21,6 +21,7 @@ namespace WebPageScreensaver
         private void PreferencesForm_Load(object sender, EventArgs e)
         {
             _checkBoxCloseOnMouseMovement.Checked = Preferences.CloseOnMouseMovement;
+            checkBoxCloseOnEsc.Checked = Preferences.CloseOnEscKey;
 
             MultiScreenMode multiScreenMode = Preferences.MultiScreen;
 
@@ -136,6 +137,7 @@ namespace WebPageScreensaver
         private void Save()
         {
             Preferences.CloseOnMouseMovement = _checkBoxCloseOnMouseMovement.Checked;
+            Preferences.CloseOnEscKey = checkBoxCloseOnEsc.Checked;
 
             if (_radioButtonSpanScreens.Checked)
             {
@@ -164,5 +166,6 @@ namespace WebPageScreensaver
                 }
             }
         }
+
     }
 }

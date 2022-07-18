@@ -26,7 +26,7 @@ namespace WebPageScreensaver
                 return;
 
             if (
-                //args.Length == 0 || 
+                args.Length == 0 ||
                 args.Length > 0 && args[0].ToLower().Contains("/c"))
             {
                 ShowPreferences();
@@ -58,8 +58,42 @@ namespace WebPageScreensaver
                 forms.Add(form);
             }
 
+
+            //_globalKeyboardHook = new GlobalKeyboardHook(new Keys[] { Keys.A, Keys.B });
+            // Hooks into all keys.
+            _globalKeyboardHook = new GlobalKeyboardHook();
+            _globalKeyboardHook.KeyboardPressed += (sender, e) =>
+            {
+                if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown)
+                {
+                    // Now you can access both, the key and virtual code
+                    //Keys loggedKey = e.KeyboardData.Key;
+                    //int loggedVkCode = e.KeyboardData.VirtualCode;
+                    if (e.KeyboardData.Key == Keys.Escape)
+                        Application.Exit();
+                    else if (e.KeyboardData.Key == Keys.C)
+                    {
+                        if (_preferencesForm == null)
+                        {
+                            _preferencesForm = new PreferencesForm();
+                            _preferencesForm.Closed += ((o, args) => _preferencesForm = null);
+                            _preferencesForm.ShowDialog();
+                        }
+                    }
+                }
+
+            };
+
+            if (Preferences.CloseOnMouseMovement)
+            {
+                MouseHook.Start();
+                MouseHook.MouseAction += (o, e) => { Application.Exit(); };
+            }
+
             Application.Run(new MultiFormContext(forms));
         }
-        //test
+
+        private static PreferencesForm? _preferencesForm;
+        private static GlobalKeyboardHook _globalKeyboardHook;
     }
 }
