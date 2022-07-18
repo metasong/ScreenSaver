@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Metaseed.WebPageScreenSaver.Configuration.Model;
+using Metaseed.WebPageScreenSaver.InputHook;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver
 {
     static class Program
     {
@@ -58,7 +60,13 @@ namespace WebPageScreensaver
                 forms.Add(form);
             }
 
+            AddInputHook();
 
+            Application.Run(new MultiFormContext(forms));
+        }
+
+        private static void AddInputHook()
+        {
             //_globalKeyboardHook = new GlobalKeyboardHook(new Keys[] { Keys.A, Keys.B });
             // Hooks into all keys.
             _globalKeyboardHook = new GlobalKeyboardHook();
@@ -66,7 +74,6 @@ namespace WebPageScreensaver
             {
                 if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown)
                 {
-                    // Now you can access both, the key and virtual code
                     //Keys loggedKey = e.KeyboardData.Key;
                     //int loggedVkCode = e.KeyboardData.VirtualCode;
                     if (e.KeyboardData.Key == Keys.Escape)
@@ -81,7 +88,6 @@ namespace WebPageScreensaver
                         }
                     }
                 }
-
             };
 
             if (Preferences.CloseOnMouseMovement)
@@ -89,8 +95,6 @@ namespace WebPageScreensaver
                 MouseHook.Start();
                 MouseHook.MouseAction += (o, e) => { Application.Exit(); };
             }
-
-            Application.Run(new MultiFormContext(forms));
         }
 
         private static PreferencesForm? _preferencesForm;

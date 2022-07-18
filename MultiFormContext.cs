@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver
 {
     internal class MultiFormContext : ApplicationContext
     {

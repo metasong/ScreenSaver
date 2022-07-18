@@ -1,4 +1,4 @@
-﻿namespace WebPageScreensaver
+﻿namespace Metaseed.WebPageScreenSaver
 {
     partial class ScreensaverForm
     {

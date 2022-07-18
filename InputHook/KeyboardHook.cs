@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver.InputHook
 {
     class GlobalKeyboardHookEventArgs : HandledEventArgs
     {
@@ -193,7 +193,7 @@ namespace WebPageScreensaver
         // EDT: Replaced VkSnapshot(int) with RegisteredKeys(Keys[])
         public static Keys[]? RegisteredKeys;
         const int KfAltdown = 0x2000;
-        public const int LlkhfAltdown = (KfAltdown >> 8);
+        public const int LlkhfAltdown = KfAltdown >> 8;
 
         public IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam)
         {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using Metaseed.WebPageScreenSaver.Configuration.Model;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver
 {
     internal partial class PrefsByScreenUserControl : UserControl
     {

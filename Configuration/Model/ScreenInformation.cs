@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver.Configuration.Model
 {
     internal class ScreenInformation
     {

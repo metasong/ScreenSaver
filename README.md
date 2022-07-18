@@ -16,6 +16,7 @@ Inspired by its predecesor [cwc/web-page-screensaver](https://github.com/cwc/web
     ![Screenshot](screenshot.png)
 
   * Select `Install` if you want it to be added to your list of Windows screensavers. The Windows `Screen Saver Settings` window will pop up with this screensaver selected.
+  * when screen saver is shown, press 'C' to show configuration dialog
 
 ## Dependencies
 
@@ -31,6 +32,8 @@ Whether you are just installing it or building it, you need the following depend
 * fix preference screen mirror option not working
 * fix mouse moving can not close the screen saver
 * add 'esc' key to close screen saver
+* when screen saver is shown, press 'C' to show configuration dialog
+
 
 ### 2.0.2-Alpha
 * TFM is now targeting net5.0-windows (due to WinForms).

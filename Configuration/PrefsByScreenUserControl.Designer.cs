@@ -1,4 +1,4 @@
-﻿namespace WebPageScreensaver
+﻿namespace Metaseed.WebPageScreenSaver
 {
     internal partial class PrefsByScreenUserControl
     {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver.InputHook
 {
     public static class MouseHook
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace WebPageScreensaver
+namespace Metaseed.WebPageScreenSaver.Configuration.Model
 {
     internal static class Preferences
     {
@@ -17,15 +17,15 @@ namespace WebPageScreensaver
             public const bool Shuffle = false;
         }
 
-        private const string KeyWebPageScreensaver = @"Software\WebPageScreensaver";
+        private const string KeyWebPageScreenSaver = @"Software\Metaseed.WebPageScreenSaver";
 
-        private static RegistryKey RootKey => Registry.CurrentUser.GetOrCreateSubKey(KeyWebPageScreensaver);
+        private static RegistryKey RootKey => Registry.CurrentUser.GetOrCreateSubKey(KeyWebPageScreenSaver);
 
         public static int ScreenCount => Screen.AllScreens.Length;
 
         public static MultiScreenMode MultiScreen
         {
-            get => Enum.Parse<MultiScreenMode>(RootKey.GetOrCreateValue(MultiScreenModeName, MultiScreenMode.Separate /* default */));
+            get => Enum.Parse<MultiScreenMode>(RootKey.GetOrCreateValue(MultiScreenModeName, MultiScreenMode.Mirror /* default */));
             set => RootKey.SetValue(MultiScreenModeName, value);
         }
 
