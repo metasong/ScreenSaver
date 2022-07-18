@@ -88,13 +88,12 @@ namespace Metaseed.WebPageScreenSaver
 
                 ScreenInformation currentScreen = Preferences.Screens[tabNumber];
 
-                foreach (string url in currentScreen.URLs)
+                foreach ( var (isChecked,url) in currentScreen.URLs)
                 {
 
-                    (var isChecked, string u) = PrefsByScreenUserControl.GetUrl(url);
                     var item = new ListViewItem
                     {
-                        Text = u,
+                        Text = url,
                         Checked = isChecked
                     };
                     currentUserControl._listViewURLs.Items.Add(item);

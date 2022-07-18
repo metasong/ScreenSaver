@@ -62,14 +62,14 @@ namespace Metaseed.WebPageScreenSaver
         private void RotateSite()
         {
             var urls = _screen.URLs.ToList();
+            if (!urls.Any(v => v.Item1)) return;
 
             if (_currentUrlIndex >= urls.Count)
             {
                 _currentUrlIndex = 0;
             }
 
-            var url = urls[_currentUrlIndex++];
-            var (isChecked, u) = PrefsByScreenUserControl.GetUrl(url);
+            var (isChecked, u) = urls[_currentUrlIndex++];
             if (isChecked)
                 BrowseTo(u);
             else

@@ -34,6 +34,7 @@ Whether you are just installing it or building it, you need the following depend
 * add 'esc' key to close screen saver
 * when screen saver is shown, press 'C' to show configuration dialog
 * auto hide cursor after 6s
+* url could be enabled separatly
 
 
 ### 2.0.2-Alpha

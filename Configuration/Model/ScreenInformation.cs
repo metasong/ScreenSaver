@@ -29,12 +29,29 @@ namespace Metaseed.WebPageScreenSaver.Configuration.Model
 
         public Rectangle Bounds { get; set; }
 
-        public IEnumerable<string> URLs
+        public IEnumerable<(bool, string)> URLs
         {
             get => RootKey
-                    .GetOrCreateValue(URLsName, "https://metaseed.github.io/pwsh/matrixRain https://metaseed.github.io/pwsh/fireworks" /* default */)
-                    .Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            set => RootKey.SetValue(URLsName, string.Join(' ', value));
+                    .GetOrCreateValue(URLsName, "https://metaseed.github.io/pwsh/matrixRain<https://metaseed.github.io/pwsh/fireworks" /* default */)
+                    .Split('<', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Select(u =>
+                    {
+                        var parts = u.Split('>');
+                        var isChecked = true;
+                        var url = u;
+                        if (parts.Length == 2)
+                        {
+                            isChecked = bool.Parse(parts[0]);
+                            url = parts[1];
+                        }
+
+                        return (isChecked, url);
+                    });
+            set
+            {
+                var v = value.Select((i) => $"{i.Item1}>{i.Item2}");
+                RootKey.SetValue(URLsName, string.Join('<', v));
+            }
         }
 
         public int RotationInterval
