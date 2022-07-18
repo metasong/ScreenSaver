@@ -39,11 +39,11 @@
             this._flowLayoutPanelMultiScreenMode = new System.Windows.Forms.FlowLayoutPanel();
             this._checkBoxCloseOnMouseMovement = new System.Windows.Forms.CheckBox();
             this._labelMultiScreen = new System.Windows.Forms.Label();
+            this.checkBoxCloseOnEsc = new System.Windows.Forms.CheckBox();
             this._tableLayoutPanelMainBottom = new System.Windows.Forms.TableLayoutPanel();
             this._buttonCancel = new System.Windows.Forms.Button();
             this._buttonOK = new System.Windows.Forms.Button();
             this._labelWebsiteURLs = new System.Windows.Forms.Label();
-            this.checkBoxCloseOnEsc = new System.Windows.Forms.CheckBox();
             this._tabControlScreens.SuspendLayout();
             this._tableLayoutPanelMain.SuspendLayout();
             this._tableLayoutPanelMainTop.SuspendLayout();
@@ -222,6 +222,17 @@
             this._labelMultiScreen.Text = "Multiscreen:";
             this._labelMultiScreen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // checkBoxCloseOnEsc
+            // 
+            this.checkBoxCloseOnEsc.AutoSize = true;
+            this.checkBoxCloseOnEsc.Location = new System.Drawing.Point(8, 44);
+            this.checkBoxCloseOnEsc.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.checkBoxCloseOnEsc.Name = "checkBoxCloseOnEsc";
+            this.checkBoxCloseOnEsc.Size = new System.Drawing.Size(169, 29);
+            this.checkBoxCloseOnEsc.TabIndex = 4;
+            this.checkBoxCloseOnEsc.Text = "Close on Esc key";
+            this.checkBoxCloseOnEsc.UseVisualStyleBackColor = true;
+            // 
             // _tableLayoutPanelMainBottom
             // 
             this._tableLayoutPanelMainBottom.AutoSize = true;
@@ -283,17 +294,6 @@
             this._labelWebsiteURLs.Text = "Website URLs:";
             this._labelWebsiteURLs.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // checkBoxCloseOnEsc
-            // 
-            this.checkBoxCloseOnEsc.AutoSize = true;
-            this.checkBoxCloseOnEsc.Location = new System.Drawing.Point(8, 44);
-            this.checkBoxCloseOnEsc.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
-            this.checkBoxCloseOnEsc.Name = "checkBoxCloseOnEsc";
-            this.checkBoxCloseOnEsc.Size = new System.Drawing.Size(169, 29);
-            this.checkBoxCloseOnEsc.TabIndex = 4;
-            this.checkBoxCloseOnEsc.Text = "Close on Esc key";
-            this.checkBoxCloseOnEsc.UseVisualStyleBackColor = true;
-            // 
             // PreferencesForm
             // 
             this.AutoSize = true;
@@ -341,7 +341,7 @@
         private System.Windows.Forms.FlowLayoutPanel _flowLayoutPanelMultiScreenMode;
 
         private System.ComponentModel.IContainer components;
-        private System.Windows.Forms.Label _labelWebsiteURLs;
         private System.Windows.Forms.CheckBox checkBoxCloseOnEsc;
+        private System.Windows.Forms.Label _labelWebsiteURLs;
     }
 }

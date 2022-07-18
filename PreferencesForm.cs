@@ -8,7 +8,7 @@ namespace WebPageScreensaver
 {
     internal partial class PreferencesForm : Form
     {
-        private const string Webpage = "https://github.com/metasong/WebPageScreensaver";
+        private const string Webpage = "https://github.com/metasong/Screensaver";
 
         public PreferencesForm()
         {

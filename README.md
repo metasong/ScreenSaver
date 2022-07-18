@@ -2,16 +2,7 @@
 
 Display webpages as your screensaver.
 
-Inspired by its predecesor [cwc/web-page-screensaver](https://github.com/cwc/web-page-screensaver) (_Achived_).
-
-## Binaries
-
-Version|32-bit|64-bit
----|---|---
-| 2.0.2-Alpha | Download | Download |
- _Due to 10MB size limit by GitHub (the generated files are ~130MB), need to find an alternative way to publish these._
-
-_Workaround: Follow the [debugging instructions](#Debugging) and generate the files yourself._
+Inspired by its predecesor [cwc/web-page-screensaver](https://github.com/cwc/web-page-screensaver)
 
 
 ## Installation instructions
@@ -30,11 +21,16 @@ _Workaround: Follow the [debugging instructions](#Debugging) and generate the fi
 
 Whether you are just installing it or building it, you need the following dependencies:
 
-* .NET 5.0 (>= Preview 8) Desktop Runtime for Windows: https://dotnet.microsoft.com/download/dotnet/5.0
-* Microsoft Edge Insider (Canary): https://www.microsoftedgeinsider.com/en-us/download/
-* Windows 10.
+* .NET 6.0  Desktop Runtime for Windows: https://dotnet.microsoft.com/download/dotnet/6.0
+* Windows 11.
 
 ## Fixes and improvements
+### 3.0.0
+* dotnet 6.0
+* fix preference options layout problem
+* fix preference screen mirror option not working
+* fix mouse moving can not close the screen saver
+* add 'esc' key to close screen saver
 
 ### 2.0.2-Alpha
 * TFM is now targeting net5.0-windows (due to WinForms).
